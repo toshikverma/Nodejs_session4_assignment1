@@ -1,0 +1,68 @@
+<html>
+<head>
+    <script>
+    function Vehicle(name,description,cpk,type){
+        
+        this.name=name;
+        this.description=description;
+        this.cpk=cpk;
+        this.type=type;
+        
+    }
+        
+        function showDetails(){
+            
+            var name=document.getElementById("carName").value;
+            var description=document.getElementById("description").value;
+            var cpk=document.getElementById("cpk").value;
+            var vehicleType=document.getElementById("vehicleType").value;
+            var fuelType=document.getElementById("fuelType").value;
+            if(vehicleType=="1"){
+                var typeVal="4 wheeler";
+                var vehicle=new Vehicle(name,description,cpk,typeVal);
+                if(fuelType==1){
+                    
+                Vehicle.prototype.fuelType="Petrol";    //inheriting Vehicle class using prorotype
+                }else{
+                        
+                        Vehicle.prototype.fuelType="CNG";        
+                    
+                }
+                
+                alert("Name:  "+vehicle.name+"\nDesciption:  "+vehicle.description+"\nCost per Kilometer:  "+vehicle.cpk+"\nVehicle type:  "+vehicle.type+"\nFuel type:  "+vehicle.fuelType);
+            }else{
+                var typeVal="2 wheeler";
+                var vehicle=new Vehicle(name,description,cpk,typeVal);
+                alert("Name:  "+vehicle.name+"\nDesciption:  "+vehicle.description+"\nCost per Kilometer:  "+vehicle.cpk+"\nVehicle type:  "+vehicle.type);
+
+            }
+        
+        }
+        function hideFuel(){
+            
+            var vehicleType=document.getElementById("vehicleType").value;
+            if(vehicleType==1){
+                
+                document.getElementById("fuel").style.display="table-row";
+            }else{
+                
+                document.getElementById("fuel").style.display="none";
+            }
+            
+        }
+    
+    </script>
+    </head><body>
+    
+<table><tr><td>Name:</td><td><input name="name" id="carName"/> </td></tr>
+    <tr><td>Description:</td><td><input name="name" id="description"/> </td></tr>
+    <tr><td>Cost per kilometer:</td><td><input name="name" id="cpk"/> </td></tr>
+    <tr><td>Vehicle Type:</td><td><select onchange="hideFuel()" id="vehicleType"><option value="1">4 Wheeler</option>
+                                            <option value="2">2 Wheeler</option>
+        </select></td></tr>
+    <tr id="fuel"><td>Fuel Type:</td><td><select id="fuelType"><option value="1">Petrol</option>
+                                            <option value="2">CNG</option>
+        </select></td></tr>
+    <tr><td colspan="2"><button  onclick="showDetails()" >Submit</button></td></tr>
+    </table>    
+    </body></html>
